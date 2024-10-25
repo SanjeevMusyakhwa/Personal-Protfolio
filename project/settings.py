@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'about',
     'Profile_app',
     'stats',
+    'skill',
 ]
 
 MIDDLEWARE = [

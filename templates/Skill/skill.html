@@ -1,0 +1,32 @@
+<section id="skills" class="skills section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Skills</h2>
+    <p>{{ skills.skill.short_description }}</p>
+  </div><!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row skills-content skills-animation">
+      {% for skill_data in skills.skilldata %}
+      <div class="col-lg-6">
+       
+        <!-- Access skill_data fields here -->
+        <div class="progress">
+            <span class="skill">
+                <span>{{ skill_data.language }}</span>
+                <i class="val">{{ skill_data.knowledge }}</i>
+            </span>
+            <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="{{ skill_data.knowledge }}" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+        
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+</section>

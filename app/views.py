@@ -5,6 +5,7 @@ from Profile_app.models import Profile
 from stats.models import Stats
 from skill.models import *
 from portfolio.models import *
+from resume.models import *
 # Create your views here.
 class Home(TemplateView):
   template_name = 'index.html'
@@ -32,6 +33,19 @@ class Home(TemplateView):
     }
     return skills
   
+  def get_resume_obj(self, *args, **kwargs):
+    # Get sections
+    education_section = ResumeSection.objects.filter(section_type="education").first()
+    experience_section = ResumeSection.objects.filter(section_type="experience").first()
+
+    # Populate entries by section type
+    resumes = {
+        'education_entries': education_section.entries.all() if education_section else [],
+        'experience_entries': experience_section.entries.all() if experience_section else [],
+    }
+    return resumes
+
+  
   def get_portfolio_obj(self,*args, **kwargs):
       portfolio_obj = Protfolio.objects.all()
       return portfolio_obj
@@ -42,6 +56,7 @@ class Home(TemplateView):
       context["profile_objs"] = self.get_profile_obj()
       context["stat_objs"] = self.get_stat_obj()
       context['skills'] = self.get_skill_obj()
+      context['resumes'] = self.get_resume_obj()
       context['portfolio_objs'] = self.get_portfolio_obj()
       return context
   

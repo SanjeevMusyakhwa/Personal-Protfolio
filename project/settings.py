@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Profile_app',
     'stats',
     'skill',
+    'resume',
     'portfolio',
 ]
 

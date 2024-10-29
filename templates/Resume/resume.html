@@ -1,0 +1,36 @@
+<section id="resume" class="resume section">
+  <div class="container section-title" data-aos="fade-up">
+      <h2>Resume</h2>
+  </div>
+
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+              <h3 class="resume-title">Education</h3>
+              {% for entry in resumes.education_entries %}
+                  <div class="resume-item">
+                      <h4>{{ entry.title }}</h4>
+                      <h5>{{ entry.start_date|date:"Y" }} - {{ entry.end_date|date:"Y" }}</h5>
+                      <p><em>{{ entry.institution_name }}</em></p>
+                      <p>{{ entry.description }}</p>
+                  </div>
+              {% empty %}
+                  <p>No education records found.</p>
+              {% endfor %}
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+              <h3 class="resume-title">Professional Experience</h3>
+              {% for entry in resumes.experience_entries %}
+                  <div class="resume-item">
+                      <h4>{{ entry.title }}</h4>
+                      <h5>{{ entry.start_date|date:"Y" }} - {{ entry.end_date|date:"Y" }}</h5>
+                      <p><em>{{ entry.institution_name }}, {{ entry.location }}</em></p>
+                      <p>{{ entry.description }}</p>
+                  </div>
+              {% empty %}
+                  <p>No experience records found.</p>
+              {% endfor %}
+          </div>
+      </div>
+  </div>
+</section>
